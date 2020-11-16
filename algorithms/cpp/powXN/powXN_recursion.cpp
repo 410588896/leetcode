@@ -37,16 +37,9 @@
 class Solution {
 private:
     double quickMul(double x, long long N) {
-        double res = 1.0;
-        double x_contribute = x;
-        while (N > 0) {
-            if (N % 2 == 1) {
-                res *= x_contribute;
-            }
-            x_contribute *=  x_contribute;
-            N /= 2;
-        }
-        return res;
+        if (N == 0) return 1.0;
+        double y = quickMul(x, N / 2);
+        return N % 2 == 0 ? y * y : y * y * x;
     }
 public:
     double myPow(double x, int n) {
